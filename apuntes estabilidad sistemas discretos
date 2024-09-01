@@ -1,0 +1,51 @@
+Estabilidad en Sistemas Discretos
+Definiciones
+Estabilidad Absoluta: Un sistema es estable cuando tiene una salida limitada producto de una entrada limitada.
+Estabilidad Asintótica: Un sistema es asintóticamente estable si su respuesta a cualquier conjunto de condiciones iniciales decae a cero asintóticamente en estado estable.
+Estabilidad BIBO (Bounded Input - Bounded Output): Un sistema tiene estabilidad BIBO si su respuesta a una entrada acotada permanece acotada.
+Subsecciones
+Espacio LaPlace vs Z
+Definición: Aunque el concepto de estabilidad es el mismo, la ubicación de polos y ceros se comporta diferente con la transformada Z y la transformada de LaPlace.
+Ecuaciones:
+En el espacio de LaPlace, la frontera de estabilidad es el eje vertical.
+En el espacio Z, la frontera de estabilidad es un círculo.
+Ejemplo:
+Polos en el plano Z: ( z = e^{sT} )
+Estable: ( \sigma < 0 )
+Marginalmente estable: ( \sigma = 0 )
+Inestable: ( \sigma > 0 )
+Ejemplo 1 por Ubicación de Polos
+Sistema: ( G(z) = \frac{4}{z^3 - 7.8z^2 + 13.4z + 3} )
+Verificación de Estabilidad:
+Polos: ( z = 5, z = 3, z = 0.2 )
+Conclusión: El sistema es inestable ya que hay 2 polos fuera del círculo unitario.
+Ejemplo 2 por Ubicación de Polos
+Sistema: ( G(z) = \frac{z-3}{z^3 - 1.5z^2 + 0.66z - 0.08} )
+Verificación de Estabilidad:
+Polos: ( z = 0.5, z = 0.8, z = 0.2 )
+Conclusión: El sistema es estable ya que todos los polos están dentro del círculo unitario.
+Test de Jury
+Definición: Método para determinar la estabilidad de un sistema en el espacio Z.
+Condiciones:
+( a_0 > 0 )
+( |a_n| < a_0 )
+( P(z)|_{z=1} > 0 ) para ( n ) par
+( P(z)|_{z=-1} < 0 ) para ( n ) impar
+Ejemplo:
+Polinomio característico: ( z^4 - 1.2z^3 + 0.07z^2 + 0.3z - 0.08 = 0 )
+Evaluación de condiciones:
+( a_0 > 0 ): ( 1 > 0 )
+( |a_n| < a_0 ): ( 0.08 < 1 )
+( P(z)|_{z=1} > 0 ): ( 0.09 > 0 )
+( P(z)|_{z=-1} < 0 ): ( 1.89 > 0 )
+Construcción del arreglo de Jury:
+( z^4 - 1.2z^3 + 0.07z^2 + 0.3z - 0.08 = 0 )
+( |b_0| > |b_{n-1}| )
+( |c_0| > |c_{n-2}| )
+( |s_0| > |s_3| )
+( |r_0| > |r_1| )
+Resumen
+Es posible mapear cualquier punto del espacio “s” al espacio “z”. Cada espacio tiene características distintas.
+En tiempo discreto, los sistemas son estables cuando todos los polos están dentro del círculo unitario.
+En tiempo discreto, los sistemas son inestables cuando al menos uno de los polos está fuera del círculo unitario.
+El criterio de Jury permite identificar si un sistema es estable o no en el espacio “z”.
