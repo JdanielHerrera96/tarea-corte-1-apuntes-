@@ -1,0 +1,81 @@
+Discretización de Controladores Analógicos
+
+Definiciones
+
+Discretización de señales analógicas: Proceso de encontrar una equivalencia entre el espacio de Laplace y el espacio Z.
+Invarianza al impulso: Método que utiliza la respuesta al impulso de ( C(s) ) para obtener ( C(z) ).
+
+Subsecciones
+Método de Invarianza al Impulso
+Definición: Se usa la respuesta al impulso de ( C(s) ) para obtener ( C(z) ).
+
+Ecuaciones:
+( C(z) = Z{C^{-1}{C(s)}t=KT} )
+( C(z) = TZ{L^{-1}{C(s)}t=KT} )
+
+Ejemplo:
+( C(s) = \frac{5(s+2)}{(s+1)(s+10)} )
+
+Aplicando fracciones parciales:
+( C(s) = \frac{40}{9(s+1)} + \frac{5}{9(s+10)} )
+
+Usando la transformada inversa:
+( L^{-1}{C(s)} = \frac{40}{9}e^{-t} + \frac{5}{9}e^{-10t} )
+
+Discretizando:
+( C(z) = T \left( \frac{40}{9}z^{-1} + \frac{5}{9}z^{-10} \right) )
+Método de Invarianza al Paso
+Definición: Se basa en la transformada Z de una función paso.
+
+Ecuaciones:
+( Z{e(t)} = \frac{1}{z-1} )
+( C(z) = Z{C(s)} )
+
+Ejemplo:
+( C(s) = \frac{2(s-2)}{s(s+1)(s+3)} )
+
+Aplicando fracciones parciales:
+( C(s) = \frac{4}{s+1} - \frac{5}{s+3} )
+
+Respuesta al paso:
+( L^{-1}{C(s)} = 4e^{-t} - 5e^{-3t} )
+
+Discretizando:
+( C(z) = \frac{4z^{-1}}{z-1} - \frac{5z^{-3}}{z-1} )
+
+Método Euler Adelante
+Definición: Aproximación discreta de la derivada.
+Ecuaciones:
+( \frac{dx(k)}{dt} \approx \frac{x(k+1) - x(k)}{T} )
+( X(z) = \frac{zX(z) - X(z)}{T(z-1)} )
+Método Euler Atrás
+Definición: Aproximación discreta de la derivada.
+
+
+Ecuaciones:
+( \frac{dx(k)}{dt} \approx \frac{x(k) - x(k-1)}{T} )
+( X(z) = \frac{X(z) - z{-1}X(z)}{T(1-z{-1})} )
+Método Trapezoidal (Tustin)
+Definición: Equivalencia entre el espacio continuo y discreto.
+
+
+Ecuaciones:
+( s = \frac{2}{T} \frac{z-1}{z+1} )
+Teorema de Muestreo de Nyquist
+Definición: Relación entre la velocidad de muestreo y la frecuencia de la señal.
+Ecuaciones:
+( f_s > 2f_N )
+
+
+Ejemplos Adicionales
+Aliasing: Se evita aumentando la frecuencia de muestreo o agregando un filtro.
+Muestreo en Control:
+( T_m < \frac{T_p}{10} )
+( T_m < \frac{T_s}{10} )
+
+
+Resumen
+Existen varios métodos de discretización de controladores continuos.
+Cada método tiene ventajas y desventajas.
+Mayor precisión implica mayor costo computacional.
+Verificar en simulación el manejo de las funciones discretas en Matlab.
